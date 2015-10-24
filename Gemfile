@@ -43,5 +43,11 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  gem 'rspec-rails', '~>2.14'
+  gem 'factory_girl_rails'
+  gem 'ffaker'
+end
+
 
 gem 'active_model_serializers', '0.9.3'
