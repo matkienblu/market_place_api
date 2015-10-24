@@ -24,5 +24,5 @@ doc/
 id_rsa
 id_rsa.pub
 #ignore vendor
-/vendor
-/vendor/*
+/vendor/cache/*
+/vendor/cache
