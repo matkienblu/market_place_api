@@ -1,9 +1,0 @@
-/home/binbin/.rvm/rubies/ruby-2.2.1/bin/ruby -r ./siteconf20151024-8405-13g4758.rb extconf.rb
-creating Makefile
-
-make "DESTDIR=" clean
-
-make "DESTDIR="
-make: Nothing to be done for `all'.
-
-make "DESTDIR=" install
