@@ -64,6 +64,10 @@ RSpec.configure do |config|
 
   #Including to test requests
   config.include Request::JsonHelpers, :type => :controller
+  config.include Request::HeadersHelpers, :type => :controller
+  config.before(:each, type: :controller) do
+    include_default_accept_headers
+  end
 
   #config.include(EmailSpec::Helpers)
   #config.include(EmailSpec::Matchers)

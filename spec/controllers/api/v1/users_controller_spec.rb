@@ -1,9 +1,15 @@
 require 'spec_helper'
 
 describe Api::V1::UsersController do
-  before(:each) { request.headers['Accept'] = "application/vnd.marketplace.v1, #{Mime::JSON}" }
   # add Content-type for request
-  before(:each) { request.headers['Content-Type'] = Mime::JSON.to_s }
+=begin
+  before(:each) do
+      request.headers['Accept'] = "application/vnd.marketplace.v1, #{Mime::JSON}"
+      request.headers['Content-Type'] = Mime::JSON.to_s
+  end
+=end
+
+
 
   # test for getting and user
   describe 'GET #show' do
