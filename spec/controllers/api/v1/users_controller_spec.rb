@@ -74,6 +74,7 @@ describe Api::V1::UsersController do
       before(:each) do
         @user = FactoryGirl.create :user
         @email = "newmail@gmail.com"
+        api_authorization_header @user.auth_token
         patch :update, { id: @user.id, user: { email: @email }}
       end
 
@@ -88,6 +89,7 @@ describe Api::V1::UsersController do
     context "when is not updated" do
       before(:each) do
         @user = FactoryGirl.create :user
+        api_authorization_header @user.auth_token
         patch :update, { id: @user.id, user: { email: "badformat.com" } }
       end
 
@@ -109,6 +111,7 @@ describe Api::V1::UsersController do
   describe "DELETE #destroy" do
     before(:each) do
       @user = FactoryGirl.create :user
+      api_authorization_header @user.auth_token
       delete :destroy, { id: @user.id }
     end
     it { should respond_with 204}
