@@ -6,6 +6,10 @@ class Api::V1::UsersController < ApplicationController
     respond_with User.find(params[:id])
   end
 
+  def index
+    respond_with User.find(2)
+  end
+
   def create
     user = User.new(user_params)
     puts "user token " +user.email
