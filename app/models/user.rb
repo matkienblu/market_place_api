@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
   # validate auth token is unique
 
   before_create :generate_authentication_token!
-
+  # an user has many products
+  has_many :products, dependent: :destroy
   def generate_authentication_token!
     begin
       aut = Devise.friendly_token
