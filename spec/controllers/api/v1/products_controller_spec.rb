@@ -10,7 +10,7 @@ describe Api::V1::ProductsController do
     end
 
     it "returns the information" do
-      product_response = json_response
+      product_response = json_response[:product]
       expect(product_response[:title]).to eql @product.title
     end
 
@@ -42,7 +42,7 @@ describe Api::V1::ProductsController do
          post :create, {user_id: user.id,product: @product_attributes }
        end
        it "renders the json for the product record just created" do
-         product_response = json_response
+         product_response = json_response[:product]
          expect(product_response[:title]).to eql @product_attributes[:title]
        end
 
@@ -86,7 +86,7 @@ describe Api::V1::ProductsController do
         put :update, {user_id: @user.id, id: @product.id, product: {title: @changed_title } }
       end
       it "renders the json for the product record just updated" do
-        product_response = json_response
+        product_response = json_response[:product]
         expect(product_response[:title]).to eql @changed_title
       end
 
