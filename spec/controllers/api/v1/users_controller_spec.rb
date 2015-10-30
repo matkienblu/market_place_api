@@ -13,7 +13,7 @@ describe Api::V1::UsersController do
 
     # check email in mock and data from getting are the same
     it 'returns the information about a reporter on a hash' do
-      user_response = json_response
+      user_response = json_response[:user]
       expect(user_response[:email]).to eql @user.email
     end
     # check status code
@@ -31,7 +31,7 @@ describe Api::V1::UsersController do
       end
 
       it 'renders the json representation for the user record just created' do
-        user_response = json_response
+        user_response = json_response[:user]
         expect(user_response[:email]).to eql @user_attributes[:email]
       end
 
@@ -72,7 +72,7 @@ describe Api::V1::UsersController do
       end
 
       it "renders the json representation for the updated user" do
-        user_response = json_response
+        user_response = json_response[:user]
         expect(user_response[:email]).to eql @email
       end
 
