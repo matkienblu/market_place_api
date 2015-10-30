@@ -8,6 +8,7 @@ MarketPlaceApi::Application.routes.draw do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: false) do
       resources :users, :only => [:show, :create, :update, :destroy,:index] do
         resources :products, :only => [:create, :update, :destroy]
+        resources :orders, :only => [:index, :show]
       end
       resources :sessions, :only => [:create, :destroy]
       resources :products, :only => [:show, :index]

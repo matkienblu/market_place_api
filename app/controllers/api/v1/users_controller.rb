@@ -21,10 +21,20 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
+    #update user follow login user
+=begin
     if current_user.update(user_params)
       render json: current_user, status: 200, location: [:api, current_user]
     else
       render json: { errors: current_user.errors }, status: 422
+    end
+=end
+
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      render json: @user, status: 200, location: [:api, @user]
+    else
+      render json: { errors: @user.errors }, status: 422
     end
   end
 
