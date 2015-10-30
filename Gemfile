@@ -51,6 +51,6 @@ group :test do
 end
 
 
-gem 'active_model_serializers', '0.9.3'
+gem 'active_model_serializers', git: 'git@github.com:rails-api/active_model_serializers.git', branch: '0-8-stable'
 gem 'devise', '3.5.2'
 gem 'mysql2', '0.3.18'

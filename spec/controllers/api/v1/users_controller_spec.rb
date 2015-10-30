@@ -16,6 +16,12 @@ describe Api::V1::UsersController do
       user_response = json_response[:user]
       expect(user_response[:email]).to eql @user.email
     end
+
+    it 'returns the information about a reporter on a hash' do
+      user_response = json_response[:user]
+      expect(user_response[:product_ids]).to eql []
+    end
+
     # check status code
     it { should respond_with 200 }
   end
