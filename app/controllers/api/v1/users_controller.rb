@@ -6,8 +6,13 @@ class Api::V1::UsersController < ApplicationController
     respond_with User.find(params[:id])
   end
 
+  def index
+    respond_with User.find(2)
+  end
   def create
     user = User.new(user_params)
+    puts "user token " +user.email
+    puts "user email " + user.password
     if user.save
       render json: user, status: 201, location: [:api, user]
     else
@@ -16,10 +21,10 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
-    if @current_user.update(user_params)
-      render json: @current_user, status: 200, location: [:api, @current_user]
+    if current_user.update(user_params)
+      render json: current_user, status: 200, location: [:api, current_user]
     else
-      render json: { errors: @current_user.errors }, status: 422
+      render json: { errors: current_user.errors }, status: 422
     end
   end
 
