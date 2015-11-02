@@ -1,0 +1,17 @@
+class Order < ActiveRecord::Base
+  # validata data
+  validates :total,numericality: {greater_than_or_equal_to: 0}, presence: true
+  validates :user_id, presence: true
+
+  # relational
+  belongs_to :user
+  has_many :placements
+  has_many :products, through: :placements
+
+  # set default data
+  before_validation :set_total!
+
+  def set_total!
+    self.total = products.map(&:price).sum
+  end
+end
