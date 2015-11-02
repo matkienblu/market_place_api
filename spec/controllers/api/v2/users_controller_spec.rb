@@ -9,11 +9,12 @@ describe Api::V2::UsersController do
     before(:each) do
       @user = FactoryGirl.create :user
       @user2 = FactoryGirl.create :user
-      @arr_user = [@user, @user2]
+      @user3 = FactoryGirl.create :user
+      @arr_user = [@user, @user2, @user3]
       get :index
     end
 
-    it 'returns 2 users' do
+    it 'returns 3 users' do
       user_response = json_response
       expect(user_response[:users].length).to eql @arr_user.length
     end

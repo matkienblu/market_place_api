@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def index
-    respond_with User.find(2)
+    respond_with User.all
   end
   def create
     user = User.new(user_params)

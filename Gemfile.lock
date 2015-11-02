@@ -57,6 +57,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    database_cleaner (1.5.1)
     debug_inspector (0.0.2)
     devise (3.5.2)
       bcrypt (~> 3.0)
@@ -184,6 +185,7 @@ DEPENDENCIES
   active_model_serializers!
   byebug
   coffee-rails (~> 4.1.0)
+  database_cleaner
   devise (= 3.5.2)
   factory_girl_rails
   ffaker

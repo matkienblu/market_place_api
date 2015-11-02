@@ -50,7 +50,7 @@ end
 
 group :test do
   gem 'rspec-rails', '~>2.14'
-
+  gem 'database_cleaner'
   gem 'shoulda-matchers', '2.8.0', require: false
 end
 
