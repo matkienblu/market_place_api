@@ -51,7 +51,7 @@ describe Api::V1::OrdersController do
 
       product_1 = FactoryGirl.create :product
       product_2 = FactoryGirl.create :product
-      order_params = { product_ids: [product_1.id, product_2.id] }
+      order_params = { product_ids_and_quantities: [[product_1.id, 2],[ product_2.id, 3]] }
       post :create, user_id: current_user.id, order: order_params
     end
 
@@ -60,20 +60,32 @@ describe Api::V1::OrdersController do
       expect(order_response[:id]).to be_present
     end
 
+    it "embeds the two product objects related to the order" do
+      order_response = json_response[:order]
+      expect(order_response[:products].size).to eql 2
+    end
+
     it { should respond_with 201 }
   end
 
   #line 17
   describe '#set_total!' do
     before(:each) do
-      product_1 = FactoryGirl.create :product, price: 100
-      product_2 = FactoryGirl.create :product, price: 85
+      product_1 = FactoryGirl.create :product, price: 100, quantity: 5
+      product_2 = FactoryGirl.create :product, price: 85, quantity: 10
 
-      @order = FactoryGirl.build :order, product_ids: [product_1.id, product_2.id]
+      placement_1 = FactoryGirl.build :placement, product: product_1, quantity: 2
+      placement_2 = FactoryGirl.build :placement, product: product_2, quantity: 1
+
+      @order = FactoryGirl.build :order
+
+      @order.placements << placement_1
+      @order.placements << placement_2
+
     end
 
     it "returns the total amount to pay for the products" do
-      expect{@order.set_total!}.to change{@order.total}.from(0).to(185)
+      expect{@order.set_total!}.to change{@order.total}.from(0).to(285)
     end
   end
 end
