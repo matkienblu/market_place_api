@@ -9,6 +9,7 @@ class Api::V1::UsersController < ApplicationController
   def index
     respond_with User.all
   end
+
   def create
     user = User.new(user_params)
     puts "user token " +user.email
